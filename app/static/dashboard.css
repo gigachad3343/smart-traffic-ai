@@ -1,0 +1,569 @@
+/* ==========================================================
+   DASHBOARD EFFECTS
+========================================================== */
+
+/* ===========================
+   Card Glow Animation
+=========================== */
+
+.card{
+
+    animation:floatCard 5s ease-in-out infinite;
+
+}
+
+.card:nth-child(2){
+
+    animation-delay:.3s;
+
+}
+
+.card:nth-child(3){
+
+    animation-delay:.6s;
+
+}
+
+.card:nth-child(4){
+
+    animation-delay:.9s;
+
+}
+
+.card:nth-child(5){
+
+    animation-delay:1.2s;
+
+}
+
+.card:nth-child(6){
+
+    animation-delay:1.5s;
+
+}
+
+.card:nth-child(7){
+
+    animation-delay:1.8s;
+
+}
+
+.card:nth-child(8){
+
+    animation-delay:2.1s;
+
+}
+
+@keyframes floatCard{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/* ===========================
+   Animated Border
+=========================== */
+
+.card::before{
+
+animation:borderMove 6s linear infinite;
+
+}
+
+@keyframes borderMove{
+
+0%{
+
+opacity:.3;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:.3;
+
+}
+
+}
+
+/* ===========================
+   Icon Animation
+=========================== */
+
+.icon{
+
+animation:iconSpin 8s linear infinite;
+
+}
+
+@keyframes iconSpin{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+50%{
+
+transform:rotate(10deg);
+
+}
+
+100%{
+
+transform:rotate(0deg);
+
+}
+
+}
+
+/* ===========================
+   LIVE Badge
+=========================== */
+
+.live-badge{
+
+animation:liveGlow 2s infinite;
+
+}
+
+@keyframes liveGlow{
+
+0%{
+
+box-shadow:0 0 8px #00ff88;
+
+}
+
+50%{
+
+box-shadow:0 0 30px #00ff88;
+
+}
+
+100%{
+
+box-shadow:0 0 8px #00ff88;
+
+}
+
+}
+
+/* ===========================
+   Camera Glow
+=========================== */
+
+.video-box{
+
+animation:cameraGlow 4s infinite;
+
+}
+
+@keyframes cameraGlow{
+
+0%{
+
+box-shadow:0 0 15px rgba(0,212,255,.2);
+
+}
+
+50%{
+
+box-shadow:0 0 35px rgba(0,212,255,.6);
+
+}
+
+100%{
+
+box-shadow:0 0 15px rgba(0,212,255,.2);
+
+}
+
+}
+
+/* ===========================
+   AI Status Animation
+=========================== */
+
+#ai-status{
+
+color:#00ff88;
+
+animation:statusBlink 1.5s infinite;
+
+}
+
+@keyframes statusBlink{
+
+0%{
+
+opacity:1;
+
+}
+
+50%{
+
+opacity:.4;
+
+}
+
+100%{
+
+opacity:1;
+
+}
+
+}
+
+/* ===========================
+   Camera LIVE
+=========================== */
+
+.camera-live{
+
+animation:liveCamera 1.2s infinite;
+
+}
+
+@keyframes liveCamera{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* ===========================
+   Footer Glow
+=========================== */
+
+footer{
+
+box-shadow:0 -10px 30px rgba(0,212,255,.15);
+
+}
+
+/* ===========================
+   Button Hover
+=========================== */
+
+button{
+
+transition:.35s;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#00d4ff;
+
+border-radius:30px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#08131d;
+
+}
+
+/* =====================================
+   REPORT BUTTONS
+===================================== */
+
+.report-btn{
+
+    background:linear-gradient(135deg,#00c6ff,#00ff88);
+
+    color:#07111f;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 0 18px rgba(0,255,180,.35);
+
+}
+
+.report-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 30px #00d4ff;
+
+}
+
+.report-btn:active{
+
+    transform:scale(.96);
+
+}
+/* ==========================================
+   SMART INTERSECTION
+========================================== */
+
+.intersection-box{
+
+    position:relative;
+
+    width:500px;
+
+    height:500px;
+
+    margin:40px auto;
+
+    background:#0d1625;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 0 35px rgba(0,212,255,.25);
+
+}
+
+/* Roads */
+
+.road.vertical{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:120px;
+
+    height:100%;
+
+    background:#2b2b2b;
+
+}
+
+.road.horizontal{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:100%;
+
+    height:120px;
+
+    background:#2b2b2b;
+
+}
+
+/* Signals */
+
+.signal{
+
+    position:absolute;
+
+    text-align:center;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+.signal span{
+
+    display:block;
+
+    margin-top:10px;
+
+}
+
+/* North */
+
+.north{
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+/* South */
+
+.south{
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+/* East */
+
+.east{
+
+    right:20px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+}
+
+/* West */
+
+.west{
+
+    left:20px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+}
+
+/* Lights */
+
+.light{
+
+    width:35px;
+
+    height:35px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    box-shadow:0 0 18px rgba(255,255,255,.3);
+
+}
+
+.green{
+
+    background:#00ff88;
+
+    box-shadow:0 0 25px #00ff88;
+
+}
+
+.red{
+
+    background:#ff3d3d;
+
+    box-shadow:0 0 25px #ff3d3d;
+
+}
+
+.yellow{
+
+    background:#ffc107;
+
+    box-shadow:0 0 25px #ffc107;
+
+}
+/* ==========================================
+   AI ALERT
+========================================== */
+
+.ai-alert{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    background:#101b2d;
+
+    color:white;
+
+    padding:18px 28px;
+
+    border-radius:15px;
+
+    font-weight:600;
+
+    box-shadow:0 0 25px rgba(0,212,255,.35);
+
+    transform:translateX(420px);
+
+    transition:.5s;
+
+    z-index:9999;
+
+    border-left:6px solid #00d4ff;
+
+}
+
+.ai-alert.show{
+
+    transform:translateX(0);
+
+}

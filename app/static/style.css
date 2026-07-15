@@ -1,0 +1,912 @@
+/* ==========================================================
+   SMART TRAFFIC CONTROL AI
+   Professional Dashboard
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+    background:
+    linear-gradient(
+    -45deg,
+    #020617,
+    #0f172a,
+    #172554,
+    #1e3a8a,
+    #0f172a);
+
+    background-size:400% 400%;
+
+    animation:gradientAnimation 18s ease infinite;
+
+}
+
+/* Animated Background */
+
+@keyframes gradientAnimation{
+
+0%{
+
+background-position:0% 50%;
+
+}
+
+50%{
+
+background-position:100% 50%;
+
+}
+
+100%{
+
+background-position:0% 50%;
+
+}
+
+}
+
+/* Floating Background */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:rgba(0,212,255,.08);
+
+border-radius:50%;
+
+top:-250px;
+left:-250px;
+
+filter:blur(120px);
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:600px;
+height:600px;
+
+background:rgba(0,255,170,.05);
+
+right:-220px;
+bottom:-220px;
+
+border-radius:50%;
+
+filter:blur(140px);
+
+z-index:-2;
+
+}
+
+/* ================= Header ================= */
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.top-header{
+
+    width:100%;
+
+    padding:25px 45px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+}
+
+.title-area h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    color:white;
+
+}
+
+.title-area p{
+
+    margin-top:8px;
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+}
+
+.live-badge{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 25px;
+
+    background:linear-gradient(90deg,#00ff88,#00d4ff);
+
+    color:#04131d;
+
+    font-weight:700;
+
+    border-radius:50px;
+
+    box-shadow:0 0 25px rgba(0,255,150,.6);
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:white;
+
+    animation:livePulse 1.2s infinite;
+
+}
+
+@keyframes livePulse{
+
+0%{
+
+transform:scale(.8);
+
+opacity:.7;
+
+}
+
+50%{
+
+transform:scale(1.4);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:scale(.8);
+
+opacity:.7;
+
+}
+
+}
+/* ================= Cards ================= */
+
+/* ==========================================================
+   DASHBOARD CARDS
+========================================================== */
+
+.stats-grid{
+
+    width:95%;
+
+    max-width:1500px;
+
+    margin:35px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:30px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+    transition:.35s;
+
+    text-align:center;
+
+}
+
+/* Animated Shine */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-40%;
+
+    width:180%;
+
+    height:180%;
+
+    background:linear-gradient(
+
+        45deg,
+
+        transparent,
+
+        rgba(255,255,255,.15),
+
+        transparent
+
+    );
+
+    transform:rotate(30deg);
+
+    animation:cardShine 8s linear infinite;
+
+}
+
+@keyframes cardShine{
+
+0%{
+
+transform:translateX(-100%) rotate(30deg);
+
+}
+
+100%{
+
+transform:translateX(100%) rotate(30deg);
+
+}
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#00d4ff;
+
+    box-shadow:
+
+    0 0 20px rgba(0,212,255,.45),
+
+    0 0 45px rgba(0,212,255,.25);
+
+}
+
+/* ICON */
+
+.card .icon{
+
+    width:75px;
+
+    height:75px;
+
+    margin:auto;
+
+    margin-bottom:18px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #00d4ff,
+
+        #0099ff
+
+    );
+
+    box-shadow:0 0 20px rgba(0,212,255,.45);
+
+    transition:.35s;
+
+}
+
+.card:hover .icon{
+
+    transform:scale(1.12) rotate(10deg);
+
+}
+
+/* CARD TITLE */
+
+.card h3{
+
+    color:#cbd5e1;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    margin-bottom:15px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+/* VALUE */
+
+.card h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#00d4ff;
+
+}
+
+/* Small Status Badge */
+
+.card::after{
+
+    content:"AI";
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    color:#00ff88;
+
+    background:rgba(0,255,136,.15);
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+}
+/* ===========================
+   CAMERA SECTION
+=========================== */
+
+/* ==========================================================
+   LIVE CAMERA SECTION
+========================================================== */
+
+.camera-section{
+
+    width:95%;
+
+    max-width:1500px;
+
+    margin:45px auto;
+
+}
+
+.camera-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.camera-header h2{
+
+    font-size:30px;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+.camera-live{
+
+    background:linear-gradient(90deg,#00ff88,#00d4ff);
+
+    color:#04131d;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    box-shadow:0 0 20px rgba(0,255,136,.5);
+
+    animation:cameraPulse 1.4s infinite;
+
+}
+
+@keyframes cameraPulse{
+
+0%{
+
+box-shadow:0 0 10px rgba(0,255,136,.3);
+
+}
+
+50%{
+
+box-shadow:0 0 30px rgba(0,255,136,.8);
+
+}
+
+100%{
+
+box-shadow:0 0 10px rgba(0,255,136,.3);
+
+}
+
+}
+
+/* Camera Frame */
+
+.video-box{
+
+    position:relative;
+
+    padding:15px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:2px solid rgba(0,212,255,.25);
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.video-box:hover{
+
+    transform:scale(1.01);
+
+    border-color:#00d4ff;
+
+    box-shadow:
+
+    0 0 20px rgba(0,212,255,.4),
+
+    0 0 45px rgba(0,212,255,.25);
+
+}
+
+/* Recording Dot */
+
+.video-box::before{
+
+    content:"🔴 REC";
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:rgba(0,0,0,.6);
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    z-index:10;
+
+}
+
+/* Camera Image */
+
+.video-box img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:18px;
+
+}
+
+/* ===========================
+   AI CHAT
+=========================== */
+
+/* ==========================================================
+   AI CHAT PANEL
+========================================================== */
+
+.chat-container{
+
+    width:95%;
+
+    max-width:1500px;
+
+    margin:45px auto;
+
+    padding:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+
+}
+
+.chat-container h2{
+
+    font-size:28px;
+
+    color:#00d4ff;
+
+    margin-bottom:20px;
+
+}
+
+.chat-box{
+
+    height:360px;
+
+    overflow-y:auto;
+
+    background:#08131d;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    line-height:1.8;
+
+}
+
+/* Scrollbar */
+
+.chat-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.chat-box::-webkit-scrollbar-thumb{
+
+    background:#00d4ff;
+
+    border-radius:20px;
+
+}
+
+/* Messages */
+
+.chat-box p{
+
+    margin-bottom:15px;
+
+    padding:12px 18px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.05);
+
+}
+
+.chat-box b{
+
+    color:#00d4ff;
+
+}
+
+/* Input */
+
+.chat-input{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+.chat-input input{
+
+    flex:1;
+
+    padding:18px;
+
+    font-size:16px;
+
+    color:white;
+
+    background:#08131d;
+
+    border:2px solid transparent;
+
+    border-radius:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.chat-input input:focus{
+
+    border-color:#00d4ff;
+
+    box-shadow:0 0 15px rgba(0,212,255,.35);
+
+}
+
+.chat-input button{
+
+    padding:18px 35px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    background:linear-gradient(135deg,#00d4ff,#00ff88);
+
+    color:#04131d;
+
+    transition:.3s;
+
+}
+
+.chat-input button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+
+    0 0 25px rgba(0,212,255,.45);
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    width:100%;
+
+    margin-top:50px;
+
+    padding:35px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(15px);
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#cbd5e1;
+
+}
+
+footer h3{
+
+    color:#00d4ff;
+
+    margin-bottom:10px;
+
+}
+
+footer p{
+
+    margin:6px 0;
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+========================================================== */
+
+@media(max-width:1100px){
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.top-header{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:20px;
+
+padding:25px;
+
+}
+
+.title-area h1{
+
+font-size:28px;
+
+}
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.card{
+
+padding:25px;
+
+}
+
+.card h1{
+
+font-size:34px;
+
+}
+
+.camera-header{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.chat-input{
+
+flex-direction:column;
+
+}
+
+.chat-input button{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.title-area h1{
+
+font-size:22px;
+
+}
+
+.card h1{
+
+font-size:30px;
+
+}
+
+.camera-header h2{
+
+font-size:22px;
+
+}
+
+.chat-container{
+
+padding:18px;
+
+}
+
+}

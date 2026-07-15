@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Traffic Control AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+     AI ALERT
+========================================== -->
+
+<div id="ai-alert" class="ai-alert">
+
+    <span id="ai-alert-text">
+
+        🚦 Smart Traffic AI Started
+
+    </span>
+
+</div>
+
+<!-- ==========================================
+HEADER
+========================================== -->
+
+<header class="top-header">
+
+    <div class="title-area">
+
+        <h1>🚦 Smart Traffic Control AI</h1>
+
+        <p>
+            Powered by YOLO11 • ByteTrack • Flask • OpenCV
+        </p>
+
+    </div>
+
+    <div class="live-badge">
+
+        <span class="dot"></span>
+
+        LIVE
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+DASHBOARD
+========================================== -->
+
+<section class="stats-grid">
+
+    <div class="card">
+
+        <div class="icon">🚗</div>
+
+        <h3>Total Vehicles</h3>
+
+        <h1 id="vehicle-count">0</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">📊</div>
+
+        <h3>Traffic Density</h3>
+
+        <h1 id="traffic-density">LOW</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">⏱</div>
+
+        <h3>Signal Timer</h3>
+
+        <h1 id="signal-timer">30 sec</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">🚦</div>
+
+        <h3>Signal Status</h3>
+
+        <h1 id="signal-status">🟢 GREEN</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">🤖</div>
+
+        <h3>AI Status</h3>
+
+        <h1 id="ai-status">ONLINE</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">📹</div>
+
+        <h3>Camera</h3>
+
+        <h1 style="color:#00ff88;">LIVE</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">🕒</div>
+
+        <h3>Current Time</h3>
+
+        <h1 id="current-time">--:--:--</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">📅</div>
+
+        <h3>Today's Date</h3>
+
+        <h1 id="current-date">Loading...</h1>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+LIVE CAMERA
+========================================== -->
+
+<section class="camera-section">
+
+<div class="camera-header">
+
+    <h2>📹 Live Traffic Camera</h2>
+
+    <div style="display:flex;gap:12px;align-items:center;">
+
+        <button class="report-btn"
+                onclick="captureDashboard()">
+            📸 Capture
+        </button>
+
+        <button class="report-btn"
+                onclick="toggleFullscreen()">
+            🖥 Full Screen
+        </button>
+
+        <span class="camera-live">
+            🟢 LIVE
+        </span>
+
+    </div>
+
+</div>
+
+    <div class="video-box">
+
+        <img src="{{ url_for('video_feed') }}">
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+LIVE TRAFFIC ANALYTICS
+========================================== -->
+
+<div class="camera-header">
+
+    <h2>📈 Live Traffic Analytics</h2>
+
+    <div style="display:flex;gap:12px;align-items:center;">
+
+        <button class="report-btn" onclick="downloadPDF()">
+            📄 PDF
+        </button>
+
+        <button class="report-btn" onclick="downloadCSV()">
+            📊 CSV
+        </button>
+
+        <span class="camera-live">
+            📊 LIVE GRAPH
+        </span>
+
+    </div>
+
+</div>
+
+    <div class="video-box">
+
+        <canvas id="trafficChart"></canvas>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+AI RECOMMENDATION
+========================================== -->
+
+<section class="stats-grid">
+
+    <div class="card" style="grid-column:span 2;">
+
+        <div class="icon">🤖</div>
+
+        <h3>AI Recommendation</h3>
+
+        <h1 id="ai-status-text">
+
+            ✅ Traffic Flow Normal
+
+        </h1>
+
+        <p style="margin-top:15px;color:#b8c5d6;">
+
+            The AI continuously monitors traffic density and automatically recommends the best signal timing.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">📊</div>
+
+        <h3>System Health</h3>
+
+        <h1 style="color:#00ff88;">
+
+            100%
+
+        </h1>
+
+        <p style="margin-top:15px;color:#b8c5d6;">
+
+            Detection system running normally.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+AI CHAT
+========================================== -->
+
+<!-- ==========================================
+     SMART INTERSECTION
+========================================== -->
+
+<section class="camera-section">
+
+    <div class="camera-header">
+
+        <h2>🚦 Smart Intersection Monitor</h2>
+
+        <span class="camera-live">
+            🤖 AI CONTROL
+        </span>
+
+    </div>
+
+    <div class="intersection-box">
+
+        <div class="road vertical"></div>
+
+        <div class="road horizontal"></div>
+
+        <!-- NORTH -->
+        <div class="signal north">
+            <div id="north-light" class="light green"></div>
+            <span>North</span>
+        </div>
+
+        <!-- SOUTH -->
+        <div class="signal south">
+            <div id="south-light" class="light red"></div>
+            <span>South</span>
+        </div>
+
+        <!-- EAST -->
+        <div class="signal east">
+            <div id="east-light" class="light red"></div>
+            <span>East</span>
+        </div>
+
+        <!-- WEST -->
+        <div class="signal west">
+            <div id="west-light" class="light red"></div>
+            <span>West</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="chat-container">
+
+    <h2>🤖 AI Traffic Assistant</h2>
+
+    <div id="chat-box" class="chat-box">
+
+        <p>
+
+            <b>AI:</b>
+
+            Hello! Ask me anything about the current traffic.
+
+        </p>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input
+
+            id="user-message"
+
+            type="text"
+
+            placeholder="Ask about traffic..."
+
+        >
+
+        <button onclick="sendMessage()">
+
+            🚀 Send
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+FOOTER
+========================================== -->
+
+<footer>
+
+    <h3>🚦 Smart Traffic Control AI</h3>
+
+    <p>
+
+        Powered by YOLO11 • ByteTrack • Flask • OpenCV
+
+    </p>
+
+    <p>
+
+        Developed by Mohsin
+
+    </p>
+
+    <p>
+
+        © 2026 Smart Traffic Monitoring System
+
+    </p>
+
+</footer>
+
+<!-- ==========================================
+SCRIPTS
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
